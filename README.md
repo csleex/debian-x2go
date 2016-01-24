@@ -13,22 +13,23 @@ X2Go enables you to access a graphical desktop of the container over a low bandw
 ##How do you use this image ?
 
 ###Building the docker image
-
+```bash
 $ git clone https://github.com/martinwangjian/debian-x2go.git
 $ cd DebianX2go/[setup]
 $ docker build -t [yourimagename] .
-
+```
 ###Running the docker image created
 ####With the password generated during runtime
-
+```bash
 $ CONTAINER_ID=$(docker run -d -p 2222:22 [yourimagename])
 $ docker logs $CONTAINER_ID
-
+```
 note down the root/dockerx passwords.
 
 ####With the preset password ( root:root dockerx:mellon)
+```bash
 $ docker run -d -p 2222:22 -e ROOT_PASS=root -e PASS=mellon [yourimagename]
-
+```
 ### Connect to server with a Client
 Download the x2go client from:
 http://wiki.x2go.org/doku.php/doc:installation:x2goclient
@@ -43,5 +44,6 @@ Password : (that you note down if the password generated during runtime)
 Select the Session TYPE as : LXDE (depend on your setup)
 
 You can also SSH to the docker container directly with root or dockerx users and their passwords over the port 2222 with linux ssh or windows putty clients.
-
+```bash
 $ ssh root@dockerhost -p 2222
+```
